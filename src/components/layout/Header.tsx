@@ -20,6 +20,8 @@ import {
   LogIn
 } from 'lucide-react';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export function Header() {
   const pathname = usePathname();
   const { 
@@ -109,12 +111,12 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative w-8 h-8 flex items-center justify-center transition-transform group-hover:scale-105">
               <img 
-                src="/logo.png" 
+                src={`${basePath}/logo.png`} 
                 alt="Found. Logo" 
                 className="w-full h-full object-contain block dark:hidden" 
               />
               <img 
-                src="/logo-white.png" 
+                src={`${basePath}/logo-white.png`} 
                 alt="Found. Logo" 
                 className="w-full h-full object-contain hidden dark:block" 
               />
@@ -130,7 +132,7 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-1">
             {currentUser && navLinks.map(link => {
               const Icon = link.icon;
-              const isActive = pathname === link.href;
+              const isActive = (pathname?.replace(/\/$/, '') || '/') === link.href.split('?')[0];
               return (
                 <Link
                   key={link.href}
@@ -249,7 +251,7 @@ export function Header() {
           <div className="md:hidden flex items-center gap-1 overflow-x-auto py-2 border-t border-zinc-200 dark:border-zinc-800 no-scrollbar">
             {navLinks.map(link => {
               const Icon = link.icon;
-              const isActive = pathname === link.href;
+              const isActive = (pathname?.replace(/\/$/, '') || '/') === link.href.split('?')[0];
               return (
                 <Link
                   key={link.href}

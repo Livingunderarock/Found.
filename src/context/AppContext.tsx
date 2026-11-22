@@ -14,6 +14,7 @@ import {
 } from '@/types';
 import { SEED_OPPORTUNITIES } from '@/data/seedOpportunities';
 import { translations, TranslationDictionary } from '@/lib/i18n';
+import { runOpportunityIngestion } from '@/lib/ingestion';
 
 export interface LocationFilterState {
   city: string;
@@ -479,12 +480,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const refreshOpportunities = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch('/api/ingest', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ forceRefresh: true })
-      });
-      const data = await res.json();
+      const data = await runOpportunityIngestion({ forceRefresh: true });
       if (data.success && data.discoveredOpportunities) {
         setOpportunities(data.discoveredOpportunities);
         setLastIngestionMessage(data.message || 'Discovery sync completed.');

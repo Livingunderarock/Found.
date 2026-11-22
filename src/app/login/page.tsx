@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 import { User, Users, GraduationCap, ArrowRight, PlusCircle, Check } from 'lucide-react';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export default function LoginPage() {
   const router = useRouter();
   const { registeredStudents, loginAsStudent, loginAsTeacher, t } = useApp();
@@ -33,12 +35,12 @@ export default function LoginPage() {
         <div className="text-center space-y-1">
           <div className="relative w-12 h-12 mx-auto mb-2 flex items-center justify-center">
             <img 
-              src="/logo.png" 
+              src={`${basePath}/logo.png`} 
               alt="Found. Logo" 
               className="w-full h-full object-contain block dark:hidden" 
             />
             <img 
-              src="/logo-white.png" 
+              src={`${basePath}/logo-white.png`} 
               alt="Found. Logo" 
               className="w-full h-full object-contain hidden dark:block" 
             />

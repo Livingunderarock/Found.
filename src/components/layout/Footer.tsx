@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Lock, ExternalLink } from 'lucide-react';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export function Footer() {
   return (
     <footer className="bg-white dark:bg-black text-zinc-600 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 pt-12 pb-8 mt-16 transition-colors">
@@ -12,12 +14,12 @@ export function Footer() {
             <div className="flex items-center gap-2 mb-3">
               <div className="relative w-6 h-6 flex items-center justify-center">
                 <img 
-                  src="/logo.png" 
+                  src={`${basePath}/logo.png`} 
                   alt="Found. Logo" 
                   className="w-full h-full object-contain block dark:hidden" 
                 />
                 <img 
-                  src="/logo-white.png" 
+                  src={`${basePath}/logo-white.png`} 
                   alt="Found. Logo" 
                   className="w-full h-full object-contain hidden dark:block" 
                 />
