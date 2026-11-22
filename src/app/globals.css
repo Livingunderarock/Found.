@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-dm-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Light Mode Defaults */
+body {
+  background-color: #FAFAFA;
+  color: #09090B;
+  font-family: var(--font-dm-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Dark Mode Overrides */
+.dark body {
+  background-color: #09090B;
+  color: #F4F4F5;
+}
+
+/* Aesthetic Cards */
+.theme-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E4E4E7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.dark .theme-card {
+  background-color: #121215;
+  border-color: #27272A;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.theme-card:hover {
+  border-color: #A1A1AA;
+}
+
+.dark .theme-card:hover {
+  border-color: #52525B;
+}
+
+/* Subtle Badges */
+.badge-clean {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3F3F46;
+}
